@@ -66,26 +66,32 @@ const questions = [
         question: "What's 2 + 2?",
         answers: ["4"]
     },
+
     {
         question: "What's 100 × 100?",
         answers: ["10000", "10,000"]
     },
+
     {
         question: "What's a verb?",
         answers: ["action", "doing"]
     },
+
     {
         question: "If all cats are animals and Bullet is a cat, then Bullet is an?",
         answers: ["animal"]
     },
+
     {
         question: "What's the largest organ in the human body?",
         answers: ["skin"]
     },
+
     {
         question: "What's the biggest ocean in the world?",
         answers: ["pacific", "pacific ocean"]
     },
+
     {
         question: "If A=1, B=2, C=3... what is CAT?",
         answers: ["3-1-20", "3,1,20"]
@@ -94,7 +100,7 @@ const questions = [
 
 function startQuiz() {
 
-    playerName = document.getElementById("name").value;
+    playerName = document.getElementById("name").value.trim();
 
     if (playerName === "") {
         alert("Please enter your name!");
@@ -126,7 +132,13 @@ function nextQuestion() {
 
     let correctAnswers = questions[currentQuestion].answers;
 
-    if (correctAnswers.includes(answer)) {
+    // Accept the answer if it contains
+    // any correct word.
+    if (
+        correctAnswers.some(correct =>
+            answer.includes(correct)
+        )
+    ) {
         score++;
         alert("Correct! 🎉");
     } else {
@@ -169,4 +181,4 @@ function finishQuiz() {
 </script>
 
 </body>
-  </html>
+</html>
